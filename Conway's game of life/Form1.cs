@@ -33,5 +33,35 @@ namespace Conway_s_game_of_life
         {
 
         }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            game.ClickCell(e.X, e.Y);
+            Invalidate();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (timer1.Enabled)
+            {
+                timer1.Stop();
+                button1.Text = "Play";
+            }
+            else
+            {
+                timer1.Start();
+                button1.Text = "Pause";
+            }
+        }
     }
 }

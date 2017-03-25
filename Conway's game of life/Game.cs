@@ -62,5 +62,30 @@ namespace Conway_s_game_of_life
                 currentPoint = new Point(startPoint.X, (currentPoint.Y + cellSize + 1));
             }
         }
+
+        private void SetCellAlive(int row, int column)
+        {
+            Row findRow = oldGrid.rows[row];
+            Cell findCell = findRow.cells[column];
+            if (findCell.alive)
+                findCell.alive = false;
+            else
+                findCell.alive = true;
+        }
+
+        public void ClickCell(int mouseX, int mouseY)
+        {
+            foreach (Row row in oldGrid.rows)
+            {
+                foreach (Cell cell in row.cells)
+                {
+                    if (cell.rectangle.Contains(mouseX, mouseY))
+                    {
+                        cell.alive = true;
+                        cell.nextAlive = true;
+                    }
+                }
+            }
+        }
     }
 }

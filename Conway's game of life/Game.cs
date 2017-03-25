@@ -9,6 +9,16 @@ namespace Conway_s_game_of_life
 {
     class Game
     {
+        private const int rows = 50;
+        private const int column = 50;
+        private const int cellSize = 10;
+        private Grid oldGrid;
+
+        public Game()
+        {
+            oldGrid = CreateGrid(rows, column);
+        }
+
         private Grid CreateGrid(int rows, int columns)
         {
             int rowCount = 0;
@@ -33,7 +43,24 @@ namespace Conway_s_game_of_life
 
         public void Draw(Graphics graphics)
         {
-            //сгенерировать точки для каждой ячейки и вокруг них построить квадраты
+            Point startPoint = new Point(5, 5);
+            Point currentPoint = startPoint;
+
+            foreach (Row row in oldGrid.rows)
+            {
+                foreach (Cell cell in row.cells)
+                {
+                    Rectangle cellRect = new Rectangle(currentPoint.X, currentPoint.Y, cellSize, cellSize);
+                    cell.rectangle = cellRect;
+                    if (cell.alive)
+                        graphics.FillRectangle(Brushes.HotPink, cellRect);
+                    else
+                        graphics.FillRectangle(Brushes.White, cellRect);
+
+                    currentPoint = new Point((currentPoint.X + cellSize + 1), currentPoint.Y);
+                }
+                currentPoint = new Point(startPoint.X, (currentPoint.Y + cellSize + 1));
+            }
         }
     }
 }

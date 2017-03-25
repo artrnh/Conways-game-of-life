@@ -51,9 +51,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(519, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.label1.Text = "Generation: ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -74,7 +75,7 @@
             this.groupBox1.Size = new System.Drawing.Size(119, 420);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Patterns:";
             // 
             // button4
             // 

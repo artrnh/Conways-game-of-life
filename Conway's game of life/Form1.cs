@@ -17,16 +17,17 @@ namespace Conway_s_game_of_life
         public Form1()
         {
             InitializeComponent();
+            game = new Game();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            game = new Game();
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            game.Draw(e.Graphics);
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -62,6 +63,16 @@ namespace Conway_s_game_of_life
                 timer1.Start();
                 button1.Text = "Pause";
             }
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            game.Draw(e.Graphics);
         }
     }
 }

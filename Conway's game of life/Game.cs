@@ -53,24 +53,14 @@ namespace Conway_s_game_of_life
                     Rectangle cellRect = new Rectangle(currentPoint.X, currentPoint.Y, cellSize, cellSize);
                     cell.rectangle = cellRect;
                     if (cell.alive)
-                        graphics.FillRectangle(Brushes.HotPink, cellRect);
-                    else
+                        graphics.FillRectangle(Brushes.Black, cellRect);
+                    else if (!cell.alive)
                         graphics.FillRectangle(Brushes.White, cellRect);
 
                     currentPoint = new Point((currentPoint.X + cellSize + 1), currentPoint.Y);
                 }
                 currentPoint = new Point(startPoint.X, (currentPoint.Y + cellSize + 1));
             }
-        }
-
-        private void SetCellAlive(int row, int column)
-        {
-            Row findRow = oldGrid.rows[row];
-            Cell findCell = findRow.cells[column];
-            if (findCell.alive)
-                findCell.alive = false;
-            else
-                findCell.alive = true;
         }
 
         public void ClickCell(int mouseX, int mouseY)
@@ -84,6 +74,17 @@ namespace Conway_s_game_of_life
                         cell.alive = true;
                         cell.nextAlive = true;
                     }
+                }
+            }
+        }
+
+        public void Clear()
+        {
+            foreach (Row row in oldGrid.rows)
+            {
+                foreach (Cell cell in row.cells)
+                {
+                    cell.alive = false;
                 }
             }
         }

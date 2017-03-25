@@ -53,8 +53,8 @@ namespace Conway_s_game_of_life
                     Rectangle cellRect = new Rectangle(currentPoint.X, currentPoint.Y, cellSize, cellSize);
                     cell.rectangle = cellRect;
                     if (cell.alive)
-                        graphics.FillRectangle(Brushes.Blue, cellRect);
-                    else if (!cell.alive)
+                        graphics.FillRectangle(Brushes.HotPink, cellRect);
+                    else
                         graphics.FillRectangle(Brushes.White, cellRect);
 
                     currentPoint = new Point((currentPoint.X + cellSize + 1), currentPoint.Y);

@@ -21,5 +21,10 @@ namespace Conway_s_game_of_life
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

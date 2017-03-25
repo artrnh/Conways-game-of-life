@@ -16,5 +16,10 @@ namespace Conway_s_game_of_life
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

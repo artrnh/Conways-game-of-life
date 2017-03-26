@@ -63,6 +63,83 @@ namespace Conway_s_game_of_life
             }
         }
 
+        public void NextGeneration()
+        {
+            
+        }
+
+        public int NearAliveCount(Cell cell)
+        {
+            int aliveCount = 0;
+            Row currentRow = oldGrid.rows[cell.rowNumber];
+
+            if(cell.rowNumber != 0)
+            {
+                Row topRow = oldGrid.rows[cell.rowNumber - 1];
+                Cell topMiddle = topRow.cells[cell.columnNumber];
+
+                if (topMiddle.alive)
+                    aliveCount++;
+
+                if (cell.columnNumber != 0)
+                {
+                    Cell TopLeft = topRow.cells[cell.columnNumber - 1];
+
+                    if (TopLeft.alive)
+                        aliveCount++;
+
+                    if(cell.columnNumber != topRow.cells.Count -1)
+                    {
+                        Cell topRight = topRow.cells[cell.columnNumber + 1];
+
+                        if (topRight.alive)
+                            aliveCount++;
+                    }
+                }
+            }
+
+            if (cell.columnNumber != 0)
+            {
+                Cell middleLeft = currentRow.cells[cell.columnNumber - 1];
+
+                if (middleLeft.alive)
+                    aliveCount++;
+            }
+
+            if(cell.columnNumber != (currentRow.cells.Count -1))
+            {
+                Cell middleRight = currentRow.cells[cell.columnNumber + 1];
+
+                if (middleRight.alive)
+                    aliveCount++;
+            }
+
+            if (cell.rowNumber != (oldGrid.rows.Count - 1))
+            {
+                Row bottomRow = oldGrid.rows[cell.rowNumber + 1];
+                Cell bottomMiddle = bottomRow.cells[cell.columnNumber];
+
+                if (bottomMiddle.alive)
+                    aliveCount++;
+
+                if (cell.columnNumber != 0)
+                {
+                    Cell bottomLeft = bottomRow.cells[cell.columnNumber - 1];
+                    if (bottomLeft.alive)
+                        aliveCount++;
+                }
+
+                if (cell.columnNumber != (bottomRow.cells.Count - 1))
+                {
+                    Cell bottomRight = bottomRow.cells[cell.columnNumber + 1];
+                    if (bottomRight.alive)
+                        aliveCount++;
+                }
+            }
+
+            return aliveCount;
+        }
+
         public void ClickCell(int mouseX, int mouseY)
         {
             foreach (Row row in oldGrid.rows)

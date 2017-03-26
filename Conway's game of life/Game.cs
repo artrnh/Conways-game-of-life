@@ -161,6 +161,16 @@ namespace Conway_s_game_of_life
             return aliveCount;
         }
 
+        internal void setCellAlive(int row, int column)
+        {
+            Row findRow = oldGrid.rows[row];
+            Cell findCell = findRow.cells[column];
+            if (findCell.alive)
+                findCell.alive = false;
+            else
+                findCell.alive = true;
+        }
+
         public void ClickCell(int mouseX, int mouseY)
         {
             foreach (Row row in oldGrid.rows)

@@ -22,32 +22,7 @@ namespace Conway_s_game_of_life
             generation = 0;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
+        private void drawTimer_Tick(object sender, EventArgs e)
         {
             game.NextGeneration();
             generation++;
@@ -55,17 +30,17 @@ namespace Conway_s_game_of_life
             Invalidate();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void play_Click(object sender, EventArgs e)
         {
-            if (timer1.Enabled)
+            if (drawTimer.Enabled)
             {
-                timer1.Stop();
-                button1.Text = "Play";
+                drawTimer.Stop();
+                play.Text = "Play";
             }
             else
             {
-                timer1.Start();
-                button1.Text = "Pause";
+                drawTimer.Start();
+                play.Text = "Pause";
             }
         }
 
@@ -84,6 +59,10 @@ namespace Conway_s_game_of_life
         {
             game.Clear();
             Invalidate();
+            drawTimer.Stop();
+            play.Text = "Play";
+            generation = 0;
+            label1.Text = "Generation: " + generation;
         }
     }
 }

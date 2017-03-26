@@ -49,7 +49,10 @@ namespace Conway_s_game_of_life
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            game.NextGeneration();
+            generation++;
+            label1.Text = "Generation: " + generation;
+            Invalidate();
         }
 
         private void button1_Click(object sender, EventArgs e)

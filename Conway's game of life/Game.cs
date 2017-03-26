@@ -65,7 +65,28 @@ namespace Conway_s_game_of_life
 
         public void NextGeneration()
         {
-            
+            foreach (Row row in oldGrid.rows)
+            {
+                foreach (Cell cell in row.cells)
+                {
+                    int aliveCount = NearAliveCount(cell);
+                    if (aliveCount < 2 && cell.alive)
+                        cell.nextAlive = false;
+                    else if (aliveCount > 3 && cell.alive)
+                        cell.nextAlive = false;
+                    else if (aliveCount == 3 && cell.alive == false)
+                        cell.nextAlive = true;
+                    else cell.nextAlive = cell.alive;
+                }
+            }
+
+            foreach (Row row in oldGrid.rows)
+            {
+                foreach (Cell cell in row.cells)
+                {
+                    cell.alive = cell.nextAlive;
+                }
+            }
         }
 
         public int NearAliveCount(Cell cell)
